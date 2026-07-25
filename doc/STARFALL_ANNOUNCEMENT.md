@@ -92,7 +92,7 @@ XlXi has a history of poor decisions like this. Previously, he organized an IP l
 on the same IP address directly associated with him at the time. Now, he's done the same thing.
 
 Dropping this IP address into [Shodan](https://www.shodan.io/), reveals that it exposes a web server.  
-The TLS certificate this web server defaults is bound to the domain `virtubrick.local`. An unfinished revival that XlXi owns and operates.  
+The TLS certificate this web server defaults to is bound to the domain `virtubrick.local`. An unfinished revival that XlXi owns and operates.  
 This effectively proves that the malicious traffic we have identified, is coming directly from the network XlXi operates.
 
 Not enough for you? Add the following to your `hosts` file, and navigate to [www.virtubrick.local](https://www.virtubrick.local/) yourself!
