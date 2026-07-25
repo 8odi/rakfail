@@ -26,7 +26,7 @@ For clarity's sake, all timestamps are in EST unless written otherwise.
    of users being harassed for having an account on Starfall. We still regret doing this, but we
    are working on an opt-in visibility feature, so the site can remain open.
 
-2. July 20th, 8:30 PM - Reports of gameserver connection issues  
+2. July 20th, 8:30 PM - Reports of game server connection issues  
    Players who were online at the time were complaining of connection issues in-game.  
    This causes us to investigate what the issue could be.
 
@@ -35,11 +35,11 @@ For clarity's sake, all timestamps are in EST unless written otherwise.
    removed for diagnostic measures.
 
 4. July 21st, 1:00 AM - Foul play identified  
-   A test was conducted where all network traffic, excluding traffic from one invidividual, was blocked
-   from the gameserver.
+   A test was conducted where all network traffic, excluding traffic from one individual, was blocked
+   from the game server.
 
     The test was a success, and we became aware the reported issue was caused by an individual
-    performing a denial-of-service attack on the gameservers.
+    performing a denial-of-service attack on the game servers.
 
 5. July 21st, 2:00 AM - Attacker identity verified  
    After some digging into how the exploit works, we decided to figure out who this attacker was.
@@ -50,7 +50,7 @@ For clarity's sake, all timestamps are in EST unless written otherwise.
    Following the confirmation that the requirement was not the cause of the issue, it was reinstated.
 
 7. July 21st, 4:00 AM - Packet captures finalized, initial firewall rules created  
-   At this point, we now have ~200 MB of raw captured traffic from the gameserver VM, all confirming
+   At this point, we now have ~200 MB of raw captured traffic from the game server VM, all confirming
    that XlXi is performing this attack.
 
 ## The Evidence
@@ -79,13 +79,13 @@ Here's a breakdown of what these fields mean:
 
 - `SRC=`: The source IP. Where the traffic is coming from.
 - `DST=`: The destination IP. Where the traffic is going.
-- `PROTO=`: Protocol. Not relevant here, but Starfall gameservers only use `UDP`
+- `PROTO=`: Protocol. Not relevant here, but Starfall game servers only use `UDP`
 - `SPT=`: The source port. Not relevant in this breakdown, but listed for clarity.
 - `DPT=`: The destination port. This is used to determine what service on the IP the traffic should be routed to.  
   Starfall uses port ranges `23700` to `23799`. If `DPT` is within that range, the traffic is for Starfall.
 
-Now that we understand the logs, it shows that XlXi is sending data to Starfall gameservers in bursts.  
-By itself, this can be harmless. But when you associate when this traffic is detected, with when gameservers crash, it becomes apparent that XlXi is conducting a denial-of-service attack. Unfortunately this isn't provable without our packet logs, but we cannot release those until a fix is public. We seriously do not want
+Now that we understand the logs, it shows that XlXi is sending data to Starfall game servers in bursts.  
+By itself, this can be harmless. But when you associate when this traffic is detected, with when game servers crash, it becomes apparent that XlXi is conducting a denial-of-service attack. Unfortunately this isn't provable without our packet logs, but we cannot release those until a fix is public. We seriously do not want
 to release these logs until we are sure a fix is public, and widely adopted.
 
 ### A Lesson in Operations Security
